@@ -5,6 +5,9 @@ from .views import (
     LatestPriceView,
     StockPriceView,
     StockFundamentalsView,
+    StockFundamentalsHistoryView,
+    StockMostRecentQuarterlyReportView,
+    StockMostRecentAnnualReportView,
 )
 
 urlpatterns = [
@@ -22,5 +25,20 @@ urlpatterns = [
         "fundamentals/<str:ticker>/",
         StockFundamentalsView.as_view(),
         name="stock-fundamentals",
+    ),
+    path(
+        "fundamentals/history/<str:ticker>/",
+        StockFundamentalsHistoryView.as_view(),
+        name="stock-fundamentals-history",
+    ),
+    path(
+        "fundamentals/quarterly/<str:ticker>/",
+        StockMostRecentQuarterlyReportView.as_view(),
+        name="stock-most-recent-quarterly",
+    ),
+    path(
+        "fundamentals/annual/<str:ticker>/",
+        StockMostRecentAnnualReportView.as_view(),
+        name="stock-most-recent-annual",
     ),
 ]
